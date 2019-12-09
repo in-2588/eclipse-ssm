@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="dao.UserMapper">
+<select id="getAll" resultType="pojo.Users">
+ select * from Users
+</select>
+<delete id="shan" parameterType="String">
+delete from Users where id=#{id}
+</delete>
+<insert id="add" parameterType="pojo.Users">
+insert into Users(id,name,sex) values (#{id},#{name},#{sex})
+</insert>
+
+<select id="sou" resultType="pojo.Users" parameterType="String">
+select * from Users where name like '%${_parameter}%'
+</select>
+
+<select id="cha" resultType="pojo.Users" parameterType="String">
+select * from Users where id=#{id}
+</select>
+	<update id="upUser" parameterType="String">
+		update Users set
+		id=#{id},name=#{name},sex=#{sex} where
+		id=#{id}
+	</update>
+
+</mapper>
